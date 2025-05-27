@@ -62,6 +62,7 @@ void ambilAntrean() {
     // membuat antrean
     if(antreanKosong()) {
         depan = belakang = data;
+        return;
     } else {
         belakang->next = data;
         data->prev = belakang;
@@ -86,6 +87,7 @@ void layaniPembeli() {
     // hapus antrean awal
     if (antreanKosong()) {
         cout << "Tidak ada antrean\n";
+        return;
     }
 
     node *hapus = depan;
@@ -114,6 +116,7 @@ void tampilPesanan(int count) {
     // lihat daftar pesanan dalam antrean
     if (antreanKosong()) {
         cout << "Tidak ada pesanan\n";
+        return;
     }
 
     // perulangan tampil
@@ -145,6 +148,12 @@ void tampilPesanan(int count) {
 void batalPesan(int count) {
     cout << "Toko Roti Manis Lezat\n\n";
 
+    // pengecekan antrean kosong
+    if (antreanKosong()) {
+        cout << "Tidak ada pesanan\n";
+        return;
+    }
+
     // hapus antrean akhir
     node *hapus = belakang;
     belakang = belakang->prev;
@@ -159,6 +168,7 @@ void tampilHistory(int jumlah) {
     // liat daftar pesanan dalam history
     if(awal == NULL) {
         cout << "Belum melayani pesanan\n";
+        return;
     }
 
     node *bantu = awal;
@@ -229,7 +239,7 @@ int main() {
         default:
             break;
         }
-    } while (pilih < 6);
+    } while (pilih != 6);
     
     return 0;
 }
